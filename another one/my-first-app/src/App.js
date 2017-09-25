@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import DropDownList from './DropDownList';
 
 class App extends Component {
     constructor() {
@@ -24,41 +24,35 @@ class App extends Component {
     }
 
     handleChange(event) {
-        fetch('https://xc-ajax-demo.herokuapp.com/api/states/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-            },
-            body: `country=${event.target.value}`,
-        }).then(response => response.json())
-            .then((response) => {
-                this.setState({
-                    stateList: response,
-                });
-            });
-
         if (event.target.value === '') {
             this.setState({
                 stateList: [],
             });
+        } else {
+            fetch('https://xc-ajax-demo.herokuapp.com/api/states/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `country=${event.target.value}`,
+            }).then(response => response.json())
+                .then((response) => {
+                    response.sort((a, b) => {
+                        if (a.name === b.name) { return 0; } else if (a.name > b.name) { return 1; } return -1;
+                    });
+                    this.setState({
+                        stateList: response,
+                    });
+                });
+            this.state.stateList.sort();
         }
     }
 
     render() {
         return (
             <div>
-                <select id="Country" onChange={this.handleChange}>
-                    <option value="" />
-                    {this.state.countryList.map(country =>
-                        <option value={country.code} key={country.code}>{country.name}</option>)}
-                </select>
-
-                <select id="State">
-                    <option value="" />
-                    {this.state.stateList.map(state =>
-                        <option value={state.code} key={state.code}>{state.name}</option>)}
-                </select>
-
+                <DropDownList input={this.state.countryList} handleChange={this.handleChange} />
+                <DropDownList input={this.state.stateList} handleChange={null} />
             </div>
         );
     }
