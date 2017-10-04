@@ -14,7 +14,7 @@ class App extends Component {
     }
 
     componentWillMount() {
-        fetch('https://xc-ajax-demo.herokuapp.com/api/countries/')
+        fetch('https://xc-ajax-demo.herokuapp.com/api/countries')
             .then(response => response.json())
             .then((response) => {
                 this.setState({
