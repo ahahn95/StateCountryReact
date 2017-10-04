@@ -1,4 +1,6 @@
-package myapp;
+package myapp.resources;
+
+import myapp.State;
 
 import javax.ws.rs.*;
 import java.util.ArrayList;

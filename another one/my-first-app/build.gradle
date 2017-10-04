@@ -37,15 +37,14 @@ targetCompatibility = 1.8
 
 dependencies {
   compile("org.springframework.boot:spring-boot-starter-web")
-  testCompile('org.springframework.boot:spring-boot-starter-test')
   compile("org.springframework.boot:spring-boot-starter")
   compile("org.springframework.boot:spring-boot-starter-web")
   compile('org.springframework.boot:spring-boot-starter-actuator')
   compile('org.springframework.boot:spring-boot-starter-security')
-    compile('com.h2database:h2:1.4.191')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+  compile("org.apache.cxf:cxf-spring-boot-starter-jaxrs:3.1.12")
+  compile('com.h2database:h2:1.4.191')
+  compile('io.swagger:swagger-jaxrs:1.5.10')
+  compile('io.javaslang:javaslang:2.0.3')
 
-    compile('io.swagger:swagger-jaxrs:1.5.10')
-
-    compile('io.javaslang:javaslang:2.0.3')
+  testCompile('org.springframework.boot:spring-boot-starter-test')
 }

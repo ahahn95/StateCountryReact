@@ -1,5 +1,6 @@
-package myapp;
+package myapp.resources;
 
+import myapp.Country;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.Consumes;
@@ -11,16 +12,16 @@ import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("/countries")
+@Path("/")
 @Component
 public class CountryController {
 
-//    @CrossOrigin
-//    @RequestMapping("/country")
     @GET
+    @Path("/countries")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public List<Country> countryList() {
+        System.out.println("\n\nGetting countries list...\n\n");
         List<Country> list = new ArrayList<>();
 
         list.add(new Country("AU","Australia"));
