@@ -2,7 +2,6 @@ package myapp;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
-import org.apache.cxf.validation.BeanValidationFeature;
 import org.apache.cxf.validation.BeanValidationProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

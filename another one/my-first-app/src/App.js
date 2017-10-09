@@ -14,8 +14,12 @@ class App extends Component {
     }
 
     componentWillMount() {
-        fetch('https://xc-ajax-demo.herokuapp.com/api/countries')
-            .then(response => response.json())
+        fetch('http://localhost:8002/countries', {
+            header: {
+                'Access-Control-Allow-Origin': '*',
+                mode: 'no-cors',
+            },
+        }).then(response => response.json())
             .then((response) => {
                 this.setState({
                     countryList: response,
@@ -29,7 +33,7 @@ class App extends Component {
                 stateList: [],
             });
         } else {
-            fetch('https://xc-ajax-demo.herokuapp.com/api/states/', {
+            fetch('http://localhost:8002/states', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',

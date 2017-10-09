@@ -11,17 +11,19 @@ import javax.ws.rs.core.MediaType;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 
 @Path("/")
 @Component
+@CrossOriginResourceSharing(allowAllOrigins = true)
 public class CountryController {
 
+    //    @CrossOrigin
+//    @RequestMapping("/country")
     @GET
     @Path("/countries")
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public List<Country> countryList() {
-        System.out.println("\n\nGetting countries list...\n\n");
         List<Country> list = new ArrayList<>();
 
         list.add(new Country("AU","Australia"));

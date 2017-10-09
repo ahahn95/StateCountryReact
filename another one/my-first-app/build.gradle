@@ -6,13 +6,15 @@
  * user guide available at https://docs.gradle.org/4.2/userguide/java_library_plugin.html
  */
 
- buildscript {
+buildscript {
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE")
         classpath("org.springframework:springloaded:1.2.6.RELEASE")
+
+
     }
 }
 
@@ -29,23 +31,26 @@ jar {
 
 // In this section you declare where to find the dependencies of your project
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-  compile("org.springframework.boot:spring-boot-starter-web")
-  compile("org.springframework.boot:spring-boot-starter")
-  compile("org.springframework.boot:spring-boot-starter-web")
-  compile('org.springframework.boot:spring-boot-starter-actuator')
-  compile('org.springframework.boot:spring-boot-starter-security')
-  compile("org.apache.cxf:cxf-spring-boot-starter-jaxrs:3.1.12")
-  compile("org.apache.cxf:cxf-rt-rs-client:3.1.12")
-  compile('com.h2database:h2:1.4.191')
-  compile('io.swagger:swagger-jaxrs:1.5.10')
-  compile('io.javaslang:javaslang:2.0.3')
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('com.h2database:h2:1.4.191')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 
-  testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile('io.swagger:swagger-jaxrs:1.5.10')
+
+    compile('io.javaslang:javaslang:2.0.3')
+    // https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-rs-security-cors
+    compile group: 'org.apache.cxf', name: 'cxf-rt-rs-security-cors', version: '3.0.4'
+
 }
